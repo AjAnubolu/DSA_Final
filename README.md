@@ -19,6 +19,8 @@ To play a basic chess game, follow these steps:
 Here is a link to the [rules of chess notation](https://www.chess.com/terms/chess-notation) for reference.
 
 ## Documentation
+Structure will look like this:
+![Screenshot 2024-01-18 at 11.08.41 AM.png]
 ### `Piece` (Abstract Class)
 - `color` (white or black)
 - `position` (e.g., a2, g4)
@@ -64,7 +66,7 @@ Here is a link to the [rules of chess notation](https://www.chess.com/terms/ches
 - `piece` (piece type or null)
 
 ### `Board`
-- `squares[8][8]` (2D array representing the chessboard)
+- `squares[8][8]` (2D array of squares representing the chessboard)
 - `initializeBoard()` (place pieces in starting positions)
 - `displayBoard()` (print the board to console or GUI)
 - `isMoveValid(fromPosition, toPosition)`
@@ -76,7 +78,9 @@ Here is a link to the [rules of chess notation](https://www.chess.com/terms/ches
 
 ### `ChessGame`
 - `board` (instance of `Board`)
-- `gameStatus` (active, checkmate, stalemate)
+- `gameStatus` (active, checkmate, stalemate if player cannot move and is not in CHECK)
+- `whiteStatus` (if neutral keep playing, if in check limit moves to stop check, if checkmate/stalemate change `gameStatus` appropriately and end game, printing result)
+- `blackStatus` (if neutral keep playing, if in check limit moves to stop check, if checkmate/stalemate change `gameStatus` appropriately and end game, printing result)
 - `updateGameStatus()`
 - `initializeGame()`
   - (set `gameStatus` to Active, start prompting for move inputs, beginning from white)
