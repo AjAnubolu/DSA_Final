@@ -20,7 +20,7 @@ Here is a link to the [rules of chess notation](https://www.chess.com/terms/ches
 
 ## Documentation
 Structure will look like this: 
-![Structure](images/Screenshot%202024-01-18%20at%2011.08.41%E2%80%AFAM.png)
+![Structure](E7BC862D-7257-40DB-B1BC-3C8280699A19.png)
 ### `Piece` (Abstract Class)
 - `color` (white or black)
 - `position` (e.g., a2, g4)
