@@ -91,9 +91,10 @@ Structure will look like this:
   - (prompt the current player for a move in chess notation)
     - (if the move is valid, move the piece on the board, switch players, and update the game status)
     - (else, prompt again)
-
-### `parseChessNotation(notation)`
-- (convert notation, e.g., e3, to board positions)
-
+-`parseChessNotation(notation)`
+  - (convert notation, e.g., e3, to board positions)
+-implement graphics
+### `ChessGameTester`
+  -create instance of `chessGame` and start program
 ## Acknowledgment
 
