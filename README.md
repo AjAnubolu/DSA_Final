@@ -92,4 +92,4 @@ Here is a link to the [rules of chess notation](https://www.chess.com/terms/ches
 - (convert notation, e.g., e3, to board positions)
 
 ## Acknowledgment
-Show your appreciation to those who have contributed to the project.
+
