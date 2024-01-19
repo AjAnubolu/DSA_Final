@@ -86,7 +86,7 @@ Structure will look like this:
 - `initializeGame()`
   - (set `gameStatus` to Active, start prompting for move inputs, beginning from white)
 - `promptMove` (ask the player for a move as input and update the piece's position, switching players afterwards if the game is still active)
-- `switchPlayer()` (switch player's turn)
+- `switchPlayer()` (switch player's turn, will be intializing `int moveCount`, white will move on `moveCount%2==1`; else black will move)
 - `playGame()`
   - (while `gameStatus` is active, display the board)
   - (prompt the current player for a move in chess notation)
