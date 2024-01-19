@@ -21,8 +21,7 @@ Here is a link to the [rules of chess notation](https://www.chess.com/terms/ches
 ## Documentation
 Structure will look like this: 
 ![Structure](E7BC862D-7257-40DB-B1BC-3C8280699A19.png)
-### Libraries
-- `java.util` and `JavaFX`
+
 ### `Piece` (Abstract Class)
 - `color` (white or black)
 - `position` (e.g., a2, g4)
@@ -99,4 +98,5 @@ Structure will look like this:
 ### `ChessGameTester`
   -create instance of `chessGame` and start program
 ## Acknowledgment
-
+### Libraries
+- `java.util` and `JavaFX`
