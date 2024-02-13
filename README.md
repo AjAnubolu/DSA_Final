@@ -22,6 +22,61 @@ Here is a link to the [rules of chess notation](https://www.chess.com/terms/ches
 Structure will look like this: 
 ![Structure](./images/image.png)
 
+# ChessBoardGUI Class Pseudocode
+
+## Package
+- Package: ajay
+
+## Imports
+- JavaFX libraries for GUI components
+- Java IO and Net for handling images
+
+## Class Definition: ChessBoardGUI
+- Class: ChessBoardGUI
+
+### Variables
+- board: Represents the chess board
+- imagePath: Path to the image assets
+- gridPane: GridPane for the chess board layout
+- selectedSquare: Currently selected square
+- selectedPiece: Currently selected chess piece
+
+### Constructor
+- ChessBoardGUI(board: Board)
+  - Initialize board, selectedPiece, selectedSquare, gridPane, movesTable, movesList
+
+### Methods
+
+#### createContent(): Parent
+- Initialize HBox root
+- Clear gridPane children
+- Loop through a 8x8 grid
+  - Create a Button for each square
+  - Set square color based on position
+  - If square has a piece, set its image
+  - Set action on square click to handleSquareClick method
+- Add gridPane (and optionally movesTable) to root
+- Return root
+
+#### getImageForPiece(piece: Piece): Image
+- Find image URL using piece type and imagePath
+- Return Image created from URL
+
+#### handleSquareClick(x: int, y: int): void
+- If no square is selected
+  - Select square and piece
+  - Print selected piece
+- Else
+  - Try to move piece
+  - Refresh GUI
+  - Reset selectedSquare and selectedPiece
+
+#### updateGridPane(): void
+- Similar to createContent but updates existing gridPane
+
+#### refreshBoardGUI(): void
+- Call updateGridPane to refresh the GUI
+
 ### `Piece` (Abstract Class)
 - `color` (white or black)
 - `position` (e.g., a2, g4)
