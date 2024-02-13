@@ -157,6 +157,69 @@ Structure will look like this:
 #### 'resultsInCheckmate'(board: Square[][], x: int, y: int, newX: int, newY: int, piece: Piece): boolean
 - Check if a move results in checkmate against the opponent using 'copyBoard' from 'Piece' class
 
+## `Piece` Enum Enhanced Pseudocode
+
+### Package
+- Package: `ajay`
+
+### Imports
+- Utilize `ArrayList` for dynamic arrays.
+- Utilize `Arrays` for array manipulations.
+
+### Enum Definition: `Piece`
+Enumerates all types of chess pieces with specific behavior for pawn movement and provides utility methods for move validation and board copying.
+
+#### Enum Values
+Defines specific chess pieces with unique behaviors, particularly for pawns which have custom `getValidMovesIgnoringCheck` implementations:
+- `WHITE_KING`, `WHITE_QUEEN`, etc., through `BLACK_PAWN`
+  - Each piece is initialized without specific moves (null) and a flag indicating if it is a long-range mover (true for queen, rook, bishop).
+
+### Attributes
+- `moves`: 2D array storing the potential moves a piece can make, represented as coordinate changes.
+- `isLongRange`: Boolean flag indicating if a piece can move over multiple squares in a single move (e.g., rook, bishop, queen).
+
+### Constructor
+- `Piece(moves, isLongRange)`: Initializes the piece with its possible moves and range behavior.
+
+### Methods
+
+
+#### `copyBoard(board)`: Square[][]
+- Creates a deep copy of the chess board, allowing simulation of moves for check detection.
+
+#### `allowsWhiteCheck(board)`: Boolean
+- Iterates over the entire board to determine if any black pieces move can capture the white king, indicating a check.
+
+#### `allowsBlackCheck(board)`: Boolean
+- Iterates over the entire board to determine if any white pieces move can capture the black king, indicating a check.
+
+#### `getValidMovesWithCheck(board, rank, file, isWhiteTurn)`: int[][]
+- Generates valid moves for a piece considering the current state of the board and filtering out moves that would leave or put the player's king in check using 'getvalidMovesIgnoringCheck' and 'copyBoard'.
+
+#### `getValidMovesIgnoringCheck(board, rank, file)`: int[][]
+- Calculates valid moves for a piece without considering whether such moves would result in a check using 'getValidMoves'.
+
+##### Overridden Implementation for Pawns (`WHITE_PAWN`, `BLACK_PAWN`)
+- `WHITE_PAWN`: Calculates forward movement and captures. Includes special moves like moving two squares forward from the starting position and capturing diagonally.
+- `BLACK_PAWN`: Similar logic applied for black pawns but in the opposite direction.
+
+#### `getValidMoves()`: int[][]
+- Switch case logic to return an array of valid moves based on the piece type. Each piece type calls its respective method to generate its moves.
+
+#### Detailed Move Generation Methods
+- `getWhitePawnMoves`, `getBlackPawnMoves`: Returns moves for pawns, considering their unique forward movement and capture rules.
+- `getKnightMoves`: Calculates L-shaped moves.
+- `getBishopMoves`: Generates diagonal moves across the board.
+- `getRookMoves`: Generates horizontal and vertical moves.
+- `getQueenMoves`: Combines the moves of rook and bishop.
+- `getKingMoves`: Generates one-square moves in all directions and includes castling under specific conditions.
+
+#### Utility Methods
+- `toString()`: Converts the enum name into a formatted string representing the piece's type.
+- `isKing()`: Checks if the piece is a king.
+- `isWhite()`: Determines if the piece is white based on its enum name.
+- `isLongRange()`: Returns true if the piece is capable of long-range movement.
+
 
 
 ## Acknowledgment
