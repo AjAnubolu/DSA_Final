@@ -22,9 +22,41 @@ Here is a link to the [rules of chess notation](https://www.chess.com/terms/ches
 Structure will look like this: 
 ![Structure](./images/image.png)
 
+
+## `ChessGame` Class
+
+### Class Definition: `ChessGame`
+Serves as the main for the chess game application
+
+### Package
+- **Package**: `ajay`
+
+### Imports
+- Utilizes **JavaFX application** framework to create and manage the graphical user interface.
+- **JavaFX scene** and **stage** components are specifically imported to facilitate the GUI setup.
+
+### Main Method
+- **`main(String[] args)`**
+  - The starting point of the application.
+  - Invokes `launch(args)`, a static method from the `Application` class, to launch the JavaFX application. This method internally calls the `start` method, passing in the primary stage.
+
+### `start(Stage primaryStage)`
+- Initializes the game's primary UI components and displays the main game window.
+- **Steps**:
+  - **Board Initialization**: Creates an instance of the `Board` class to manage the game's logical state.
+  - **GUI Setup**: Instantiates `ChessBoardGUI` with the `board` instance, setting up the graphical representation of the chess game.
+  - **Scene Creation**: Constructs a `Scene` by calling `chessBoardGUI.createContent()`, which prepares the content for display.
+  - **Stage Configuration**: Sets the window (stage) title to "Chess Game", assigns the created scene to the primary stage, and displays the stage.
+
+### Additional Notes
+-To run the chess game, execute the `main` method. The JavaFX framework handles window management and event loops
+- **GUI-Centric Design**: `ChessGame` focuses on setting up and launching the graphical interface for the chess game, relying on JavaFX for window management and event handling. The game logic is handled separately within the `Board` and related classes. Separation of the graphical interface (`ChessBoardGUI`) from the game logic (`Board`) is emphasized
+- **Extensibility**: The structure allows for easy extension or modification, such as adding menu options, implementing additional features like saving/loading games, or integrating network play.
+
+
 ## `ChessBoardGUI` Class
 
-### Class Definition
+### Class Definition: `ChessBoardGUI`
 - The `ChessBoardGUI` class is designed to bridge the game logic encapsulated by the `Board` class with a user-friendly graphical interface. Manages the display of the chessboard and pieces along with the interaction logic, enabling players to select and move pieces.
 - 
 ### Package
@@ -211,7 +243,44 @@ Defines specific chess pieces with unique behaviors, particularly for pawns whic
 - `isWhite()`: Determines if the piece is white based on its enum name.
 - `isLongRange()`: Returns true if the piece is capable of long-range movement.
 
+## `Square` Class 
 
+### Package
+- Package: `ajay`
+
+### Class Definition: `Square`
+Represents a single square on the chessboard. Holds information about any chess piece that occupies it ('null' if none) and its coordinates on the board.
+
+### Attributes
+- `piece`: A `Piece` object that resides on this square. It's `null` if the square is empty.
+- `x`: Integer representing the x-coordinate of the square on the chessboard.
+- `y`: Integer representing the y-coordinate of the square on the chessboard.
+
+### Constructor
+- `Square(int x, int y)`
+  - Initializes a `Square` instance with specified coordinates. Initially, no piece occupies the square (`piece` is set to `null`).
+
+### Methods
+
+#### `getPiece()`: `Piece`
+- Returns the `Piece` currently occupying the square, or `null` if the square is empty.
+
+#### `setPiece(Piece piece)`: `void`
+- Assigns a `Piece` to the square. Use `null` to indicate the square is being emptied.
+
+#### `isEmpty()`: `boolean`
+- Checks if the square is empty (i.e., does not contain a piece).
+- Returns `true` if there's no piece on the square, otherwise `false`.
+
+#### `getX()`: `int`
+- Returns the x-coordinate of the square, indicating its position on the chessboard horizontally.
+
+#### `getY()`: `int`
+- Returns the y-coordinate of the square, indicating its position on the chessboard vertically.
+
+#### `clone()`: `Square`
+- Creates and returns a deep copy of the `Square` instance.
+- The cloned `Square` has the same coordinates and, if present, a reference to the same `Piece` object (note: this does not clone the `Piece` object itself, just copies the reference).
 
 ## Acknowledgment
 -Thank you to <ins>Ms. Shahin</ins> for teaching me how to code throughout high school!
