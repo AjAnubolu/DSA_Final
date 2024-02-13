@@ -27,7 +27,7 @@ Change 'botMove' to 'botMove2' if you want to play against the stronger bot.
 
 # Documentation
 Structure will look like this: 
-![Structure](./images/classStructure.png)
+![Structure](./images/chessStructure.png)
 
 
 ## `ChessGame` Class
