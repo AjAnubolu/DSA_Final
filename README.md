@@ -7,20 +7,27 @@
 4. [Acknowledgment](#acknowledgment)
 
 ## Description
-**JavaCheckmate Live** is a live chess board that enables two players to play a game of chess against each other. This project implements a standard 8x8 chessboard, following the [standard rule set](https://www.fide.com/FIDE/handbook/LawsOfChess.pdf). Users can enter their moves using chess notation into a move list, and the board will update with each entry.
+**JavaCheckmate Live** is a live chess board that enables two players to play a game of chess against each other. This project implements a standard 8x8 chessboard, following the [standard rule set](https://www.fide.com/FIDE/handbook/LawsOfChess.pdf). Users can click the piece they want to move and select the end square to move a piece, and the board will update with each entry.
 
 ## Usage
-To play a basic chess game, follow these steps:
+To play a basic chess game player vs player, follow these steps:
 1. Run the program.
 2. Type an opening move, like e4.
 3. Switch turns with your friend to input their moves.
 4. Continue alternating turns until the game is complete.
 
-Here is a link to the [rules of chess notation](https://www.chess.com/terms/chess-notation) for reference.
+To play against the bot, delete the comments around the if statement at the end of the 'movePiece' method in the 'Board' class:
+
+if(!isWhiteTurn) {
+   	   botMove();
+}
+
+Change 'botMove' to 'botMove2' if you want to play against the stronger bot.
+
 
 # Documentation
 Structure will look like this: 
-![Structure](./images/image.png)
+![Structure](./images/classStructure.png)
 
 
 ## `ChessGame` Class
@@ -282,6 +289,8 @@ Represents a single square on the chessboard. Holds information about any chess 
 - Creates and returns a deep copy of the `Square` instance.
 - The cloned `Square` has the same coordinates and, if present, a reference to the same `Piece` object (note: this does not clone the `Piece` object itself, just copies the reference).
 
+## Future Improvements
+Here is a link to the [rules of chess notation](https://www.chess.com/terms/chess-notation) for reference.
 ## Acknowledgment
 -Thank you to <ins>Ms. Shahin</ins> for teaching me how to code throughout high school!
   
