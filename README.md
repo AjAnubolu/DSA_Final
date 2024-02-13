@@ -22,32 +22,30 @@ Here is a link to the [rules of chess notation](https://www.chess.com/terms/ches
 Structure will look like this: 
 ![Structure](./images/image.png)
 
-# ChessBoardGUI Class Pseudocode
+### ChessBoardGUI Class
 
-## Package
+#### Package
 - Package: ajay
 
-## Imports
+#### Imports
 - JavaFX libraries for GUI components
 - Java IO and Net for handling images
 
-## Class Definition: ChessBoardGUI
-- Class: ChessBoardGUI
 
-### Variables
+#### Variables
 - board: Represents the chess board
 - imagePath: Path to the image assets
 - gridPane: GridPane for the chess board layout
 - selectedSquare: Currently selected square
 - selectedPiece: Currently selected chess piece
 
-### Constructor
+#### Constructor
 - ChessBoardGUI(board: Board)
   - Initialize board, selectedPiece, selectedSquare, gridPane, movesTable, movesList
 
-### Methods
+#### Methods
 
-#### createContent(): Parent
+##### createContent(): Parent
 - Initialize HBox root
 - Clear gridPane children
 - Loop through a 8x8 grid
@@ -58,11 +56,11 @@ Structure will look like this:
 - Add gridPane (and optionally movesTable) to root
 - Return root
 
-#### getImageForPiece(piece: Piece): Image
+##### getImageForPiece(piece: Piece): Image
 - Find image URL using piece type and imagePath
 - Return Image created from URL
 
-#### handleSquareClick(x: int, y: int): void
+##### handleSquareClick(x: int, y: int): void
 - If no square is selected
   - Select square and piece
   - Print selected piece
@@ -71,10 +69,10 @@ Structure will look like this:
   - Refresh GUI
   - Reset selectedSquare and selectedPiece
 
-#### updateGridPane(): void
+##### updateGridPane(): void
 - Similar to createContent but updates existing gridPane
 
-#### refreshBoardGUI(): void
+##### refreshBoardGUI(): void
 - Call updateGridPane to refresh the GUI
 
 ### `Piece` (Abstract Class)
