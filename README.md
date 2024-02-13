@@ -22,7 +22,7 @@ Here is a link to the [rules of chess notation](https://www.chess.com/terms/ches
 Structure will look like this: 
 ![Structure](./images/image.png)
 
-## `ChessBoardGUI`
+## `ChessBoardGUI Class`
 
 ### Package
 - Package: `ajay`
@@ -77,7 +77,7 @@ Structure will look like this:
 
 
 
-## `Board`
+## `Board Class`
 
 ### Package
 - Package: `ajay`
@@ -139,100 +139,28 @@ Structure will look like this:
 - An alternate bot move strategy implementing similar greedy algorithm with randomness but also accounts for position, mobility, check, and checkmate
 
 
-#### evaluateMove2(piece: Piece, move: int[], x: int, y: int): int
+#### 'evaluateMove2'(piece: Piece, move: int[], x: int, y: int): int
 - Another method for evaluating moves, including positional and mobility considerations using 'getPieceValue2', 'getPositionalValue', 'getMobilityValue', 'resultsInCheck', and 'resultsInCheckmate'
 
-#### getPieceValue2(piece: Piece): int
+#### 'getPieceValue2'(piece: Piece): int
 - Return a numeric value for a piece with different weightage than getPieceValue
 
-#### getPositionalValue(piece: Piece, x: int, y: int): int
+#### 'getPositionalValue'(piece: Piece, x: int, y: int): int
 - Calculate a value based on a piece's position on the board
 
-#### getMobilityValue(piece: Piece, board: Square[][], x: int, y: int): int
+#### 'getMobilityValue'(piece: Piece, board: Square[][], x: int, y: int): int
 - Calculate a value based on how many moves a piece can make
 
-#### resultsInCheck(board: Square[][], x: int, y: int, newX: int, newY: int, piece: Piece): boolean
+#### 'resultsInCheck'(board: Square[][], x: int, y: int, newX: int, newY: int, piece: Piece): boolean
 - Check if a move results in a check against the opponent using 'copyBoard' from 'Piece' class
 
-#### resultsInCheckmate(board: Square[][], x: int, y: int, newX: int, newY: int, piece: Piece): boolean
+#### 'resultsInCheckmate'(board: Square[][], x: int, y: int, newX: int, newY: int, piece: Piece): boolean
 - Check if a move results in checkmate against the opponent using 'copyBoard' from 'Piece' class
 
 
-### `Piece` (Abstract Class)
-- `color` (white or black)
-- `position` (e.g., a2, g4)
-- `availableMoves()`
 
-### `Pawn` (Extends `ChessPiece`)
-- `color`
-- `position`
-- `availableMoves()` (specific movement logic for Pawn)
-- `setPosition(newPosition)` (if move is in availableMoves, move; else don't)
-
-### `Knight` (Extends `ChessPiece`)
-- `color`
-- `position`
-- `availableMoves()` (specific movement logic for Knight)
-- `setPosition(newPosition)` (if move is in availableMoves, move; else don't)
-
-### `Bishop` (Extends `ChessPiece`)
-- `color`
-- `position`
-- `availableMoves()` (specific movement logic for Bishop)
-- `setPosition(newPosition)` (if move is in availableMoves, move; else don't)
-
-### `Rook` (Extends `ChessPiece`)
-- `color`
-- `position`
-- `availableMoves()` (specific movement logic for Rook)
-- `setPosition(newPosition)` (if move is in availableMoves, move; else don't)
-
-### `Queen` (Extends `ChessPiece`)
-- `color`
-- `position`
-- `availableMoves()` (specific movement logic for Queen)
-- `setPosition(newPosition)` (if move is in availableMoves, move; else don't)
-
-### `King` (Extends `ChessPiece`)
-- `color`
-- `position`
-- `availableMoves()` (specific movement logic for King)
-- `setPosition(newPosition)` (if move is in availableMoves, move; else don't)
-
-### `Square`
-- `piece` (piece type or null)
-
-### `Board`
-- `squares[8][8]` (2D array of squares representing the chessboard)
-- `initializeBoard()` (place pieces in starting positions)
-- `displayBoard()` (print the board to console or GUI)
-- `isMoveValid(fromPosition, toPosition)`
-  - (if piece is null or does not belong to the current player, return false)
-  - (if toPosition is not within the piece's availableMoves(), return false)
-  - (if the move puts the current player's king in check, return false)
-- `setPosition(toPosition)` (return true if successful)
-- `movePiece(fromPosition, toPosition)` (calls `isMoveValid`, checking if the move is valid and updating the position on the board if so)
-
-### `ChessGame`
-- `board` (instance of `Board`)
-- `gameStatus` (active, checkmate, stalemate if player cannot move and is not in CHECK)
-- `whiteStatus` (if neutral keep playing, if in check limit moves to stop check, if checkmate/stalemate change `gameStatus` appropriately and end game, printing result)
-- `blackStatus` (if neutral keep playing, if in check limit moves to stop check, if checkmate/stalemate change `gameStatus` appropriately and end game, printing result)
-- `updateGameStatus()`
-- `initializeGame()`
-  - (set `gameStatus` to Active, start prompting for move inputs, beginning from white)
-- `promptMove` (ask the player for a move as input and update the piece's position, switching players afterwards if the game is still active)
-- `switchPlayer()` (switch player's turn, will be intializing `int moveCount`, white will move on `moveCount%2==1`; else black will move)
-- `playGame()`
-  - (while `gameStatus` is active, display the board)
-  - (prompt the current player for a move in chess notation)
-    - (if the move is valid, move the piece on the board, switch players, and update the game status)
-    - (else, prompt again)
--`parseChessNotation(notation)`
-  - (convert notation, e.g., e3, to board positions)
--implement graphics using javaFX
-### `ChessGameTester`
-  -create instance of `chessGame` and start program
 ## Acknowledgment
+-Thank you to <ins>Ms. Shahin</ins> for teaching me how to code throughout high school!
+  
 ### Libraries
 - `java.util` and `JavaFX`
