@@ -7,7 +7,7 @@
 4. [Acknowledgment](#acknowledgment)
 
 ## Description
-**JavaCheckmate Live** is a live chess board that enables two players to play a game of chess against each other. This project implements a standard 8x8 chessboard, following the standard rule set. Users can enter their moves using chess notation into a move list, and the board will update with each entry.
+**JavaCheckmate Live** is a live chess board that enables two players to play a game of chess against each other. This project implements a standard 8x8 chessboard, following the [standard rule set](https://www.fide.com/FIDE/handbook/LawsOfChess.pdf). Users can enter their moves using chess notation into a move list, and the board will update with each entry.
 
 ## Usage
 To play a basic chess game, follow these steps:
