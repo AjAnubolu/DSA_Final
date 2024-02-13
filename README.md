@@ -79,85 +79,73 @@ Structure will look like this:
 
 ## `Board Class`
 
+### Class Definition: `Board`
+- The `Board` class is central to managing the game logic of chess, handling move validation, game state updates, and bot decision-making. Manages the state of the chessboard, including piece positions, turn management, and game state conditions (check, checkmate, stalemate)
+
 ### Package
 - Package: `ajay`
 
 ### Attributes
-- `board`: 2D Array of `Square` containing state of board
-- `whiteCheckmate`: boolean if white king is in 'check'
-- `blackCheckmate`: boolean if black king is in 'check'
-- `stalemate`: boolean if game state is 'stalemate'
-- `isWhiteTurn`: boolean (initially true, indicating it's White's turn, swaps after every `movePiece` call)
+- `board`: A 2D array of `Square`, representing the chessboard. Each `Square` may contain a `Piece`.
+- `whiteCheckmate`: Boolean flag indicating if the white king is in checkmate.
+- `blackCheckmate`: Boolean flag indicating if the black king is in checkmate.
+- `stalemate`: Boolean flag indicating if the game is in a stalemate, where the current player has no legal move but is not in check.
+- `isWhiteTurn`: Boolean indicating if it is White's turn (`true`) or Black's turn (`false`).
 
 ### Constructor
 - `Board()`
-  - Initialize the 8x8 `board` array with `Square` objects
-  - Call `setupPieces()` to place chess pieces in their initial positions
+  - Initializes the 8x8 `board` with `Square` objects, representing an empty chessboard.
+  - Calls `setupPieces()` to place all chess pieces in their standard starting positions.
 
 ### Methods
 
-#### `isWhiteCheck()`: boolean
-- Check if White is in check using `Piece` class method 'allowsWhiteCheck'
-
-#### `isBlackCheck()`: boolean
-- Check if Black is in check using `Piece` class method 'allowsBlackCheck'
-
-#### `movePiece(startX: int, startY: int, endX: int, endY: int)`: boolean
-- Validate move coordinates
-- Get start and end `Square` objects
-- Validate the moving piece
-- Calculate valid moves for the piece
-- If move is valid:
-  - Execute special moves like castling or pawn promotion
-  - Update squares with new piece positions
-  - Check for check, checkmate, and stalemate conditions
-  - Toggle `isWhiteTurn`
-- Return true if move is made, false otherwise
-
-#### `locateWhiteKing()`: int[]
-- Return coordinates of the White King
-
-#### `locateBlackKing()`: int[]
-- Return coordinates of the Black King
-
 #### `setupPieces()`
-- Place chess pieces on the board in their initial positions
+- Places chess pieces for both White and Black players in their standard initial positions on the `board`.
 
-#### `getSquare(x: int, y: int)`: `Square`
-- Return the `Square` object at the given coordinates
+#### `movePiece(startX, startY, endX, endY)`: Boolean
+- Attempts to move a piece from `(startX, startY)` to `(endX, endY)`.
+- Validates the move based on chess rules, including checking if the path is valid for the specific piece and if the destination is not occupied by a friendly piece.
+- Handles special moves like castling and pawn promotion when conditions are met.
+- Updates the piece's position on the `board` if the move is valid.
+- After the move, checks for checks, checkmates, or stalemate conditions and updates relevant flags.
+- Toggles `isWhiteTurn` to switch turns between players.
+- Returns `true` if the move was successfully executed, otherwise `false`.
 
-#### `botMove()`
-- Execute a move for the bot based on greedy algorithm(assigning a point value to each piece) and an element of randomness so that top left piece is not always moved if values are equal
+#### `isWhiteCheck()`, `isBlackCheck()`: Boolean
+- Determine if the white or black king is in check, respectively. This involves scanning the `board` for potential attacks on the king by opponent pieces.
 
-#### `evaluateMove(piece: Piece, move: int[], x: int, y: int)`: int
-- Evaluate the given move's worth based on `getPieceValue`
+#### `locateWhiteKing()`, `locateBlackKing()`: int[]
+- Finds and returns the coordinates `(x, y)` of the white or black king on the `board`.
 
-#### `getPieceValue(piece: Piece)`: int
-- Return a numeric value representing the piece's importance
+#### `getSquare(x, y)`: Square
+- Returns the `Square` at the specified coordinates, facilitating access to the piece (if any) located there.
 
-#### `botMove2()`
-- An alternate bot move strategy implementing similar greedy algorithm with randomness but also accounts for position, mobility, check, and checkmate
+#### AI and Move Evaluation Methods
+
+##### `botMove()`, `botMove2()`
+- Simulate AI move decisions. `botMove()` implements a basic greedy algorithm, selecting moves based on piece value and a degree of randomness to avoid predictable behavior.
+- `botMove2()` enhances the decision-making process by also considering positional values, mobility (the number of legal moves a piece has), and potential checks/checkmates, aiming for more strategic gameplay.
+
+##### `evaluateMove(piece, move, x, y)`, `evaluateMove2(piece, move, x, y)`: int
+- Calculate and return a score representing the value or quality of a given move, considering factors like captured piece value, strategic positioning, and game state implications (e.g., escaping check, putting the opponent in check).
+- `evaluateMove2` provides a more complex evaluation, factoring in additional considerations like piece mobility and board control.
+
+##### `getPieceValue(piece)`, `getPieceValue2(piece)`: int
+- Return a numeric score representing the value of a piece, with `getPieceValue2` potentially applying different weights or considerations than `getPieceValue`.
+
+##### `getPositionalValue(piece, x, y)`, `getMobilityValue(piece, board, x, y)`: int
+- `getPositionalValue` computes a score based on a piece's strategic position on the board.
+- `getMobilityValue` calculates a score based on the number of legal moves available for the piece, indicating its mobility.
+
+##### `resultsInCheck(board, x, y, newX, newY, piece)`, `resultsInCheckmate(board, x, y, newX, newY, piece)`: Boolean
+- Assess if executing a specific move results in placing the opponent's king in check (`resultsInCheck`) or checkmate (`resultsInCheckmate`).
+- These methods simulate the move on a copy of the `board` to evaluate the resulting game state without affecting the actual game.
 
 
-#### 'evaluateMove2'(piece: Piece, move: int[], x: int, y: int): int
-- Another method for evaluating moves, including positional and mobility considerations using 'getPieceValue2', 'getPositionalValue', 'getMobilityValue', 'resultsInCheck', and 'resultsInCheckmate'
+## `Piece` Enum 
 
-#### 'getPieceValue2'(piece: Piece): int
-- Return a numeric value for a piece with different weightage than getPieceValue
-
-#### 'getPositionalValue'(piece: Piece, x: int, y: int): int
-- Calculate a value based on a piece's position on the board
-
-#### 'getMobilityValue'(piece: Piece, board: Square[][], x: int, y: int): int
-- Calculate a value based on how many moves a piece can make
-
-#### 'resultsInCheck'(board: Square[][], x: int, y: int, newX: int, newY: int, piece: Piece): boolean
-- Check if a move results in a check against the opponent using 'copyBoard' from 'Piece' class
-
-#### 'resultsInCheckmate'(board: Square[][], x: int, y: int, newX: int, newY: int, piece: Piece): boolean
-- Check if a move results in checkmate against the opponent using 'copyBoard' from 'Piece' class
-
-## `Piece` Enum Enhanced Pseudocode
+### Enum Definition: `Piece`
+Enumerates the different types of chess pieces, centralizing their identification within the game logic. Each enum value represents a unique chess piece, characterized by distinct movement capabilities and roles within the game. This design simplifies the process of implementing game rules and managing piece interactions.
 
 ### Package
 - Package: `ajay`
@@ -165,9 +153,6 @@ Structure will look like this:
 ### Imports
 - Utilize `ArrayList` for dynamic arrays.
 - Utilize `Arrays` for array manipulations.
-
-### Enum Definition: `Piece`
-Enumerates all types of chess pieces with specific behavior for pawn movement and provides utility methods for move validation and board copying.
 
 #### Enum Values
 Defines specific chess pieces with unique behaviors, particularly for pawns which have custom `getValidMovesIgnoringCheck` implementations:
@@ -182,7 +167,6 @@ Defines specific chess pieces with unique behaviors, particularly for pawns whic
 - `Piece(moves, isLongRange)`: Initializes the piece with its possible moves and range behavior.
 
 ### Methods
-
 
 #### `copyBoard(board)`: Square[][]
 - Creates a deep copy of the chess board, allowing simulation of moves for check detection.
