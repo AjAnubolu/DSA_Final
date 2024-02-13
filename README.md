@@ -22,57 +22,64 @@ Here is a link to the [rules of chess notation](https://www.chess.com/terms/ches
 Structure will look like this: 
 ![Structure](./images/image.png)
 
-## `ChessBoardGUI Class`
+## `ChessBoardGUI` Class
 
+### Class Definition
+- The `ChessBoardGUI` class is designed to bridge the game logic encapsulated by the `Board` class with a user-friendly graphical interface. Manages the display of the chessboard and pieces along with the interaction logic, enabling players to select and move pieces.
+- 
 ### Package
 - Package: `ajay`
 
 ### Imports
-- JavaFX libraries for GUI components
-- Java IO and Net for handling images
+- Utilizes **JavaFX libraries** for GUI components, essential for creating and managing the graphical user interface.
+- Uses **Java IO and Net** for handling images, enabling the chess pieces to be visually represented with icons.
 
 ### Attributes
-- `board`: Represents the chess board
-- `imagePath`: Path to the image assets
-- `gridPane`: `GridPane` for the chess board layout
-- `selectedSquare`: Currently selected square
-- `selectedPiece`: Currently selected chess piece
+- `board`: A reference to the `Board` class instance, representing the game's logic and state.
+- `imagePath`: String path to the directory containing image assets for the chess pieces.
+- `gridPane`: A `GridPane` used to layout the chessboard's squares in a grid format.
+- `selectedSquare`: Tracks the currently selected `Square` on the chessboard, if any.
+- `selectedPiece`: Holds the currently selected `Piece`, facilitating move operations.
 
 ### Constructor
-- `ChessBoardGUI(board: Board)`
-  - Initialize `board`, `selectedPiece`, `selectedSquare`, `gridPane`, `movesTable`, `movesList`
+- **`ChessBoardGUI(board: Board)`**
+  - Initializes the GUI with references to the game `board`, setting up initial values for `selectedPiece`, `selectedSquare`, and preparing the `gridPane`.
+  - Optionally initializes other GUI components like `movesTable` and `movesList`, if tracking of moves is required.
 
 ### Methods
 
 #### `createContent()`: `Parent`
-- Initialize `HBox` root
-- Clear `gridPane` children
-- Loop through a 8x8 grid
-  - Create a `Button` for each square
-  - Set 'Square' color based on position
-  - If 'Square' has a 'Piece', set its image
-  - Set action on square click to `handleSquareClick` method
-- Add `gridPane` (and optionally `movesTable`) to root
-- Return root
+- Constructs the primary content of the GUI.
+- Initializes an `HBox` or similar container as the root.
+- Clears any existing children from the `gridPane`.
+- Populates the `gridPane` with buttons representing chessboard squares, dynamically setting their color and attaching event handlers for click actions.
+  - Each square/button is assigned a color based on its position to achieve the checkered pattern.
+  - If a square contains a piece, its corresponding image is set using `getImageForPiece`.
+- Adds the `gridPane` to the root container, along with any other components like a `movesTable`, if utilized.
+- Returns the root `Parent` object for display.
 
 #### `getImageForPiece(piece: Piece)`: `Image`
-- Find image URL using 'Piece' type and `imagePath`
-- Return `Image` created from URL
+- Determines the correct image URL for a given `Piece`, using its type and the `imagePath`.
+- Attempts to load and return the `Image` from the URL, handling any potential IO exceptions.
 
 #### `handleSquareClick(x: int, y: int)`: `void`
-- If no 'Square' is selected
-  - Select 'Square' and 'Piece'
-  - Print selected 'Piece'
-- Else
-  - Try to move 'Piece'
-  - Refresh GUI
-  - Reset `selectedSquare` and `selectedPiece`
+- Handles user interaction with the chessboard's squares.
+- If no square is currently selected, selects the square and potentially the piece on that square.
+- If a square is already selected, attempts to move the selected piece to the new square, according to chess rules.
+- Updates the GUI to reflect any changes, such as moving a piece and capturing an opponent's piece.
+- Resets `selectedSquare` and `selectedPiece` after the move attempt.
 
 #### `updateGridPane()`: `void`
-- Similar to `createContent` but updates existing `gridPane`
+- Refreshes the `gridPane` to reflect the current state of the `board`.
+- Similar to `createContent` but specifically focused on updating the grid's children to match any changes in piece positions or selections.
 
 #### `refreshBoardGUI()`: `void`
-- Call `updateGridPane` to refresh the GUI
+- Invokes `updateGridPane`, along with any additional necessary updates to the GUI, ensuring the visual representation is in sync with the game's current state.
+
+### Additional Notes
+- 
+- This pseudocode aims to provide a foundation for implementing a chess game GUI using JavaFX, with considerations for extensibility and maintainability.
+
 
 
 
