@@ -22,89 +22,89 @@ Here is a link to the [rules of chess notation](https://www.chess.com/terms/ches
 Structure will look like this: 
 ![Structure](./images/image.png)
 
-## ChessBoardGUI
+## `ChessBoardGUI`
 
 ### Package
-- Package: ajay
+- Package: `ajay`
 
 ### Imports
 - JavaFX libraries for GUI components
 - Java IO and Net for handling images
 
-
 ### Attributes
-- board: Represents the chess board
-- imagePath: Path to the image assets
-- gridPane: GridPane for the chess board layout
-- selectedSquare: Currently selected square
-- selectedPiece: Currently selected chess piece
+- `board`: Represents the chess board
+- `imagePath`: Path to the image assets
+- `gridPane`: `GridPane` for the chess board layout
+- `selectedSquare`: Currently selected square
+- `selectedPiece`: Currently selected chess piece
 
 ### Constructor
-- ChessBoardGUI(board: Board)
-  - Initialize board, selectedPiece, selectedSquare, gridPane, movesTable, movesList
+- `ChessBoardGUI(board: Board)`
+  - Initialize `board`, `selectedPiece`, `selectedSquare`, `gridPane`, `movesTable`, `movesList`
 
 ### Methods
 
-#### createContent(): Parent
-- Initialize HBox root
-- Clear gridPane children
+#### `createContent()`: `Parent`
+- Initialize `HBox` root
+- Clear `gridPane` children
 - Loop through a 8x8 grid
-  - Create a Button for each square
-  - Set square color based on position
-  - If square has a piece, set its image
-  - Set action on square click to handleSquareClick method
-- Add gridPane (and optionally movesTable) to root
+  - Create a `Button` for each square
+  - Set 'Square' color based on position
+  - If 'Square' has a 'Piece', set its image
+  - Set action on square click to `handleSquareClick` method
+- Add `gridPane` (and optionally `movesTable`) to root
 - Return root
 
-#### getImageForPiece(piece: Piece): Image
-- Find image URL using piece type and imagePath
-- Return Image created from URL
+#### `getImageForPiece(piece: Piece)`: `Image`
+- Find image URL using 'Piece' type and `imagePath`
+- Return `Image` created from URL
 
-#### handleSquareClick(x: int, y: int): void
-- If no square is selected
-  - Select square and piece
-  - Print selected piece
+#### `handleSquareClick(x: int, y: int)`: `void`
+- If no 'Square' is selected
+  - Select 'Square' and 'Piece'
+  - Print selected 'Piece'
 - Else
-  - Try to move piece
+  - Try to move 'Piece'
   - Refresh GUI
-  - Reset selectedSquare and selectedPiece
+  - Reset `selectedSquare` and `selectedPiece`
 
-#### updateGridPane(): void
-- Similar to createContent but updates existing gridPane
+#### `updateGridPane()`: `void`
+- Similar to `createContent` but updates existing `gridPane`
 
-#### refreshBoardGUI(): void
-- Call updateGridPane to refresh the GUI
-# Board Class Pseudocode
+#### `refreshBoardGUI()`: `void`
+- Call `updateGridPane` to refresh the GUI
 
-## Package
-- Package: ajay
 
-## Board
+
+
+## `Board`
+
+### Package
+- Package: `ajay`
 
 ### Attributes
-- board: 2D Array of Square containing state of board
-- whiteCheckmate: boolean if white king is in 'check'
-- blackCheckmate: boolean if black king is in 'check'
-- stalemate: boolean if game state is 'stalemate'
-- isWhiteTurn: boolean (initially true, indicating it's White's turn, swaps after every movePiece call)
+- `board`: 2D Array of `Square` containing state of board
+- `whiteCheckmate`: boolean if white king is in 'check'
+- `blackCheckmate`: boolean if black king is in 'check'
+- `stalemate`: boolean if game state is 'stalemate'
+- `isWhiteTurn`: boolean (initially true, indicating it's White's turn, swaps after every `movePiece` call)
 
 ### Constructor
-- Board()
-  - Initialize the 8x8 board array with Square objects
-  - Call setupPieces() to place chess pieces in their initial positions
+- `Board()`
+  - Initialize the 8x8 `board` array with `Square` objects
+  - Call `setupPieces()` to place chess pieces in their initial positions
 
 ### Methods
 
-#### isWhiteCheck(): boolean
-- Check if White is in check using Piece class method 'allowsWhiteCheck'
+#### `isWhiteCheck()`: boolean
+- Check if White is in check using `Piece` class method 'allowsWhiteCheck'
 
-#### isBlackCheck(): boolean
-- Check if Black is in check using Piece class method 'allowsBlackCheck'
+#### `isBlackCheck()`: boolean
+- Check if Black is in check using `Piece` class method 'allowsBlackCheck'
 
-
-#### movePiece(startX: int, startY: int, endX: int, endY: int): boolean
+#### `movePiece(startX: int, startY: int, endX: int, endY: int)`: boolean
 - Validate move coordinates
-- Get start and end Square objects
+- Get start and end `Square` objects
 - Validate the moving piece
 - Calculate valid moves for the piece
 - If move is valid:
@@ -114,35 +114,36 @@ Structure will look like this:
   - Toggle `isWhiteTurn`
 - Return true if move is made, false otherwise
 
-#### locateWhiteKing(): int[]
+#### `locateWhiteKing()`: int[]
 - Return coordinates of the White King
 
-#### locateBlackKing(): int[]
+#### `locateBlackKing()`: int[]
 - Return coordinates of the Black King
 
-#### setupPieces()
+#### `setupPieces()`
 - Place chess pieces on the board in their initial positions
 
-#### getSquare(x: int, y: int): Square
-- Return the Square object at the given coordinates
+#### `getSquare(x: int, y: int)`: `Square`
+- Return the `Square` object at the given coordinates
 
-#### botMove()
+#### `botMove()`
 - Execute a move for the bot based on greedy algorithm(assigning a point value to each piece) and an element of randomness so that top left piece is not always moved if values are equal
 
-#### evaluateMove(piece: Piece, move: int[], x: int, y: int): int
-- Evaluate the given move's worth based on 'getPieceValue'
+#### `evaluateMove(piece: Piece, move: int[], x: int, y: int)`: int
+- Evaluate the given move's worth based on `getPieceValue`
 
-#### getPieceValue(piece: Piece): int
+#### `getPieceValue(piece: Piece)`: int
 - Return a numeric value representing the piece's importance
 
-#### botMove2()
-- An alternate bot move strategy accounting for same greedy algorithm but also accounts for position, mobility, check, and checkmate
+#### `botMove2()`
+- An alternate bot move strategy implementing similar greedy algorithm with randomness but also accounts for position, mobility, check, and checkmate
+
 
 #### evaluateMove2(piece: Piece, move: int[], x: int, y: int): int
 - Another method for evaluating moves, including positional and mobility considerations using 'getPieceValue2', 'getPositionalValue', 'getMobilityValue', 'resultsInCheck', and 'resultsInCheckmate'
 
 #### getPieceValue2(piece: Piece): int
-- Return a numeric value for a piece, potentially with different valuations than getPieceValue
+- Return a numeric value for a piece with different weightage than getPieceValue
 
 #### getPositionalValue(piece: Piece, x: int, y: int): int
 - Calculate a value based on a piece's position on the board
