@@ -10,6 +10,13 @@
 **JavaCheckmate Live** is a live chess board that enables two players to play a game of chess against each other. This project implements a standard 8x8 chessboard, following the [standard rule set](https://www.fide.com/FIDE/handbook/LawsOfChess.pdf). Users can click the piece they want to move and select the end square to move a piece, and the board will update with each entry.
 
 ## Usage
+
+To edit, clone the repository:
+```bash
+git clone https://github.com/AjAnubolu/DSA_Final.git
+```
+Open the code with the IDE of your choice. Add JavaFX as an [external library](https://openjfx.io/).
+
 To play a basic chess game player vs player, follow these steps:
 1. Run the program.
 2. Type an opening move, like e4.
@@ -19,7 +26,7 @@ To play a basic chess game player vs player, follow these steps:
 To play against the bot, delete the comments around the if statement at the end of the 'movePiece' method in the 'Board' class:
 
 if(!isWhiteTurn) {
-   	   botMove();
+    botMove();
 }
 
 Change 'botMove' to 'botMove2' if you want to play against the stronger bot.
