@@ -24,11 +24,11 @@ To play a basic chess game player vs player, follow these steps:
 4. Continue alternating turns until the game is complete.
 
 To play against the bot, delete the comments around the if statement at the end of the 'movePiece' method in the 'Board' class:
-
+<pre>
 if(!isWhiteTurn) {
     botMove();
 }
-
+</pre>
 Change 'botMove' to 'botMove2' if you want to play against the stronger bot.
 
 
