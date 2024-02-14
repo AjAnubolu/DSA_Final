@@ -297,9 +297,13 @@ Represents a single square on the chessboard. Holds information about any chess 
 - The cloned `Square` has the same coordinates and, if present, a reference to the same `Piece` object (note: this does not clone the `Piece` object itself, just copies the reference).
 
 ## Future Improvements
-Here is a link to the [rules of chess notation](https://www.chess.com/terms/chess-notation) for reference.
+
+- Bot enhancements(addition of depth with treeset, more holistic view of board)
+- moveList in GUI(in progres with chessMove class converting moves to [notation](https://www.chess.com/terms/chess-notation) and tableView in GUI class)
+
 ## Acknowledgment
--Thank you to <ins>Ms. Shahin</ins> for teaching me how to code throughout high school!
+
+Thank you to <ins>Ms. Shahin</ins> for teaching me how to code throughout high school!
   
 ### Libraries
 
