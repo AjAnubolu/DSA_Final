@@ -38,7 +38,7 @@ Serves as the main for the chess game application
 ### Package
 - **Package**: `ajay`
 
-### Imports
+### Dependencies
 - Utilizes **JavaFX application** framework to create and manage the graphical user interface.
 - **JavaFX scene** and **stage** components are specifically imported to facilitate the GUI setup.
 
@@ -295,4 +295,6 @@ Here is a link to the [rules of chess notation](https://www.chess.com/terms/ches
 -Thank you to <ins>Ms. Shahin</ins> for teaching me how to code throughout high school!
   
 ### Libraries
-- `java.util` and `JavaFX`
+
+- `JDK >= 17`
+- `JavaFX`
