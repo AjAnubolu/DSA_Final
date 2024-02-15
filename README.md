@@ -80,7 +80,7 @@ Serves as the main for the chess game application
 - Utilizes **JavaFX libraries** for GUI components, essential for creating and managing the graphical user interface.
 - Uses **Java IO and Net** for handling images, enabling the chess pieces to be visually represented with icons.
 
-### Attributes
+### Fields
 - `board`: A reference to the `Board` class instance, representing the game's logic and state.
 - `imagePath`: String path to the directory containing image assets for the chess pieces.
 - `gridPane`: A `GridPane` used to layout the chessboard's squares in a grid format.
@@ -138,7 +138,7 @@ Serves as the main for the chess game application
 ### Package
 - Package: `ajay`
 
-### Attributes
+### Fields
 - `board`: A 2D array of `Square`, representing the chessboard. Each `Square` may contain a `Piece`.
 - `whiteCheckmate`: Boolean flag indicating if the white king is in checkmate.
 - `blackCheckmate`: Boolean flag indicating if the black king is in checkmate.
@@ -212,7 +212,7 @@ Defines specific chess pieces with unique behaviors, particularly for pawns whic
 - `WHITE_KING`, `WHITE_QUEEN`, etc., through `BLACK_PAWN`
   - Each piece is initialized without specific moves (null) and a flag indicating if it is a long-range mover (true for queen, rook, bishop).
 
-### Attributes
+### Fields
 - `moves`: 2D array storing the potential moves a piece can make, represented as coordinate changes.
 - `isLongRange`: Boolean flag indicating if a piece can move over multiple squares in a single move (e.g., rook, bishop, queen).
 
@@ -265,7 +265,7 @@ Defines specific chess pieces with unique behaviors, particularly for pawns whic
 ### Class Definition: `Square`
 Represents a single square on the chessboard. Holds information about any chess piece that occupies it ('null' if none) and its coordinates on the board.
 
-### Attributes
+### Fields
 - `piece`: A `Piece` object that resides on this square. It's `null` if the square is empty.
 - `x`: Integer representing the x-coordinate of the square on the chessboard.
 - `y`: Integer representing the y-coordinate of the square on the chessboard.
