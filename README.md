@@ -17,13 +17,13 @@ git clone https://github.com/AjAnubolu/DSA_Final.git
 ```
 Open the code with the IDE of your choice. 
 If you are using Eclipse, you can initialize with:
-'''bash
+```bash
 ./gradlew eclipse
-'''
+```
 Open Powershell and run:
-'''bash
+```bash
 ./gradlew run
-'''
+```
 If you want to build in a jar file, run:
 To play a basic chess game player vs player, follow these steps:
 1. Run the program.
