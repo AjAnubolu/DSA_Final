@@ -15,8 +15,16 @@ To edit, clone the repository:
 ```bash
 git clone https://github.com/AjAnubolu/DSA_Final.git
 ```
-Open the code with the IDE of your choice. Add JavaFX as an [external library](https://openjfx.io/).
-
+Open the code with the IDE of your choice. 
+If you are using Eclipse, you can initialize with:
+'''bash
+./gradlew eclipse
+'''
+Open Powershell and run:
+'''bash
+./gradlew run
+'''
+If you want to build in a jar file, run:
 To play a basic chess game player vs player, follow these steps:
 1. Run the program.
 2. Type an opening move, like e4.
@@ -302,7 +310,7 @@ Represents a single square on the chessboard. Holds information about any chess 
 - moveList in GUI(in progres with chessMove class converting moves to [notation](https://www.chess.com/terms/chess-notation) and tableView in GUI class)
 
 ## Acknowledgment
-
+This project uses Gradle as a build tool
 Thank you to <ins>Ms. Shahin</ins> for teaching me how to code throughout high school!
   
 ### Libraries
