@@ -7,7 +7,7 @@
 4. [Acknowledgment](#acknowledgment)
 
 ## Description
-**JavaCheckmate Live** is a live chess board that enables two players to play a game of chess against each other. This project implements a standard 8x8 chessboard, following the [standard rule set](https://www.fide.com/FIDE/handbook/LawsOfChess.pdf). Users can click the piece they want to move and select the end square to move a piece, and the board will update with each entry.
+**JavaCheckmate Live** is a live chess board that enables two players to play a game of chess against each other, with a graphical user interface built using JavaFX. Leveraged object-oriented programming principles to design a modular game architecture, implementing classes for the board, pieces, moves, and game logic. Ensured comprehensive game functionality with robust error handling to enforce legal moves and manage special cases such as en passant, castling (both queen-side and king-side), and pawn promotion. Designed and implemented an AI opponent by creating heuristic evaluation functions that assign point values to move attributes correlated with winning conditions—considering factors like piece value, positional advantage, mobility, and checks for check or checkmate.
 
 ## Usage
 
